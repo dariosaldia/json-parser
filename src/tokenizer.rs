@@ -1,5 +1,4 @@
-const OBJECT_START_TOKEN: &str = "{";
-const OBJECT_END_TOKEN: &str = "}";
+use crate::elements::{OBJECT_END_TOKEN, OBJECT_START_TOKEN};
 
 pub fn get_tokens(json_text: String) -> Vec<String> {
     let mut tokens: Vec<String> = vec![];
@@ -17,25 +16,24 @@ pub fn get_tokens(json_text: String) -> Vec<String> {
 mod tests {
     use super::*;
 
-	#[test]
-	fn test_empty_input() {
-		let input = String::from("");
-		let result = get_tokens(input);
-		assert!(result.is_empty())
-	}
+    #[test]
+    fn test_empty_input() {
+        let input = String::from("");
+        let result = get_tokens(input);
+        assert!(result.is_empty())
+    }
 
-	#[test]
-	fn test_only_object_start() {
-		let input = String::from("{");
-		let result = get_tokens(input);
-		assert_eq!(result, vec![OBJECT_START_TOKEN])
-	}
+    #[test]
+    fn test_only_object_start() {
+        let input = String::from("{");
+        let result = get_tokens(input);
+        assert_eq!(result, vec![OBJECT_START_TOKEN])
+    }
 
-	#[test]
-	fn test_only_object_end() {
-		let input = String::from("}");
-		let result = get_tokens(input);
-		assert_eq!(result, vec![OBJECT_END_TOKEN])
-	}
+    #[test]
+    fn test_only_object_end() {
+        let input = String::from("}");
+        let result = get_tokens(input);
+        assert_eq!(result, vec![OBJECT_END_TOKEN])
+    }
 }
-
